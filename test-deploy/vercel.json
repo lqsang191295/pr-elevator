@@ -11,5 +11,11 @@
       "src": "/(.*)",
       "dest": "dist/main.js"
     }
-  ]
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [{ "source": "/api/:path*", "destination": "/api/:path*" }]
 }
