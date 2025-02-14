@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/src/main.js",
+      "src": "dist/main.js",
       "use": "@vercel/node"
     }
   ],
@@ -11,11 +11,5 @@
       "src": "/(.*)",
       "dest": "dist/src/main.js"
     }
-  ],
-  "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 10
-    }
-  },
-  "rewrites": [{ "source": "/api/:path*", "destination": "/api/:path*" }]
+  ]
 }
