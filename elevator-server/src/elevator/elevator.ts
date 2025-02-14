@@ -1,6 +1,5 @@
 import { DIRECTION, iElevator, iQueueElevator, STATUS } from "src/types/elevator.type"
-import { sleepAsync } from "utils/time"
-import { MyGateway } from "src/gateway/gateway"
+import { sleepAsync } from "../utils/time"
 
 export class Elevator {
     private id: number
