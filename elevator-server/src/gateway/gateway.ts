@@ -6,8 +6,8 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
-import { ElevatorService } from 'src/elevator/elevator.service';
-import { iElevator, iQueueElevatorPayload } from 'src/types/elevator.type';
+import { ElevatorService } from '../elevator/elevator.service';
+import { iElevator, iQueueElevatorPayload } from '../types/elevator.type';
 
 @Injectable()
 @WebSocketGateway({

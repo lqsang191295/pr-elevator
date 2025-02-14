@@ -1,6 +1,6 @@
 import { forwardRef, Global, Module } from '@nestjs/common';
 import { MyGateway } from './gateway';
-import { ElevatorModule } from 'src/elevator/elevator.module';
+import { ElevatorModule } from '../elevator/elevator.module';
 
 @Global()
 @Module({

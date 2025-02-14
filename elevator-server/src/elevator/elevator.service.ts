@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { iElevator, iQueueElevatorPayload } from 'src/types/elevator.type';
+import { iElevator, iQueueElevatorPayload } from '../types/elevator.type';
 import { Elevator } from './elevator';
-import { MyGateway } from 'src/gateway/gateway';
+import { MyGateway } from '../gateway/gateway';
 
 @Injectable()
 export class ElevatorService {

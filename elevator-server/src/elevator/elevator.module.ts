@@ -1,7 +1,7 @@
 import { forwardRef, Module } from '@nestjs/common';
 import { ElevatorService } from './elevator.service';
 import { ElevatorController } from './elevator.controller';
-import { GatewayModule } from 'src/gateway/gateway.module';
+import { GatewayModule } from '../gateway/gateway.module';
 
 @Module({
   imports: [forwardRef(() => GatewayModule)],

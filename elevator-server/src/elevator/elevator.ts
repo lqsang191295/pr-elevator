@@ -1,4 +1,4 @@
-import { DIRECTION, iElevator, iQueueElevator, STATUS } from "src/types/elevator.type"
+import { DIRECTION, iElevator, iQueueElevator, STATUS } from "../types/elevator.type"
 import { sleepAsync } from "../utils/time"
 
 export class Elevator {
