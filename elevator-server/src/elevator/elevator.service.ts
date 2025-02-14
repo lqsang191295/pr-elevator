@@ -96,8 +96,5 @@ export class ElevatorService {
         }
 
         fElevator.reset()
-        // await fElevator.idle()
-
-        // this.moveElevator(id)
     }
 }

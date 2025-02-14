@@ -61,7 +61,6 @@ export class MyGateway implements OnModuleInit {
 
   @SubscribeMessage('updateElevator')
   onUpdateElevator(@MessageBody() body: iElevator) {
-    console.log('Body --------- ', body);
     this.server.emit('onUpdateElevator', body);
   }
 }

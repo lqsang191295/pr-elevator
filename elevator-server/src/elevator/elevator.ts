@@ -80,7 +80,7 @@ export class Elevator {
 
         if(objMinFloorDown && this.floor > objMinFloorDown.floor && this.direction === 'DOWN') return
 
-        console.log('--------------- oppositeDirection -------------------')
+        console.log('--------------- oppositeDirection -------------------', objMaxFloorUp, '---', objMinFloorDown)
         
         switch(this.direction) {
             case 'UP':
@@ -105,6 +105,8 @@ export class Elevator {
     }
 
     public async move() {
+        if (!this.canMove()) return
+
         this.status = 'MOVING'
 
         await sleepAsync(1000)
@@ -167,13 +169,11 @@ export class Elevator {
 
     private getObjMaxFloorUpInQueue(): iQueueElevator | null{
         return this.queue
-            .filter(queue => queue.direction === 'UP')
             .reduce((maxReq, req) => (req.floor > maxReq.floor ? req : maxReq), this.queue[0]);
     }
 
     private getObjMinFloorDownInQueue(): iQueueElevator | null{
         return this.queue
-            .filter(queue => queue.direction === 'DOWN')
             .reduce((minReq, req) => (req.floor < minReq.floor ? req : minReq), this.queue[0]);
     }
 
@@ -183,6 +183,29 @@ export class Elevator {
         })
 
         if (idxQueue === -1) return false
+
+        return true
+    }
+
+    private canMove(): boolean {
+        const objMaxFloorUp = this.getObjMaxFloorUpInQueue()
+        const objMinFloorDown = this.getObjMinFloorDownInQueue()
+
+        console.log('this.direction ===== ', 1)
+        switch(this.direction) {
+            case 'UP':
+                if (objMaxFloorUp && this.floor + 1 > objMaxFloorUp.floor) {
+                    console.log('this.direction ===== ', 2, this.floor, this.floor+1 > objMaxFloorUp.floor)
+                    return false
+                }
+                break
+            case 'DOWN':
+                if (objMinFloorDown && this.floor - 1 < objMinFloorDown.floor) {
+                    console.log('this.direction ===== ', 3, this.floor, this.floor - 1 < objMinFloorDown.floor)
+                    return false
+                }
+                break
+        }
 
         return true
     }
