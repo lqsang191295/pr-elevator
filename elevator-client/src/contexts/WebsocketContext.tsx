@@ -2,7 +2,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 
-export const socket = io("http://localhost:3001");
+export const socket = io(process.env.API_HOST);
 export const WebsocketContext = createContext<Socket | null>(null);
 
 interface WebsocketProviderProps {
