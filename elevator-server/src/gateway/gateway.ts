@@ -11,7 +11,10 @@ import { iElevator, iQueueElevatorPayload } from '../types/elevator.type';
 
 @Injectable()
 @WebSocketGateway({
-  cors: true,
+  cors: {
+    origin: ['https://pr-elevator.vercel.app/'],
+    methods: ['GET', 'POST'],
+  },
 })
 export class MyGateway implements OnModuleInit {
   @WebSocketServer()
