@@ -7,7 +7,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: ['*', 'https://pr-elevator-client.vercel.app'],
-    methods: 'GET, PUT, POST, DELETE'
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Chỉ định HTTP methods được phép
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 
   // app.useWebSocketAdapter(new IoAdapter(app));
