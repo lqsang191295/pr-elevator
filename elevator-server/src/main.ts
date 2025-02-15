@@ -10,7 +10,7 @@ async function bootstrap() {
     methods: 'GET, PUT, POST, DELETE'
   })
 
-  app.useWebSocketAdapter(new IoAdapter(app));
+  // app.useWebSocketAdapter(new IoAdapter(app));
 
   await app.listen(process.env.PORT ?? 3001);
 }
