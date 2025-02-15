@@ -1,6 +1,6 @@
 import { iElevator, iRequestFloor } from "@/types/elevator"
 
-const API_HOST = 'http://localhost:3001' || process.env.API_HOST || 'https://pr-elevator.vercel.app'
+const API_HOST = process.env.API_HOST || 'https://pr-elevator.vercel.app'
 
 export const initialElevator = async (): Promise<iElevator[]> => {
     console.log('process.env.API_HOST= === ', process.env.API_HOST)
