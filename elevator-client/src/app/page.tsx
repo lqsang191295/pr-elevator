@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import ElevatorContainer from "./components/elevatorContainer";
 import { iElevator, iRequestFloor } from "@/types/elevator";
 import { WebsocketContext } from "@/contexts/WebsocketContext";
-import { initialElevator } from "@/api/elevator";
+import { callElevator, initialElevator } from "@/api/elevator";
 
 export default function Home() {
   const numbers = [...Array(10).keys()].reverse();
@@ -19,24 +19,21 @@ export default function Home() {
     setElevators(elevators);
   };
 
-  const handleRequestFloor = (payload: iRequestFloor) => {
-    console.log("AAAAAAAAAA ", payload);
+  const handleRequestFloor = async (payload: iRequestFloor) => {
+    await callElevator(payload);
 
-    socket?.emit("callElevator", payload);
+    // console.log("AAAAAAAAAA ", payload);
+
+    // socket?.emit("callElevator", payload);
   };
 
   const connectSocket = () => {
-    console.log("socket ==== ", socket);
     socket?.on("connect", () => {
       console.log("Connected!");
     });
 
     socket?.on("moveElevator", (data) => {
       console.log("Move elevator!", data);
-    });
-
-    socket?.on("onMessage", (data) => {
-      console.log("on message ==== ", data);
     });
 
     socket?.on("onUpdateElevator", (data: iElevator) => {
@@ -47,7 +44,6 @@ export default function Home() {
 
   const updateElevator = (newData: iElevator) => {
     setElevators((prevElevators) => {
-      // Tạo một bản sao mới của danh sách
       const updatedElevators = prevElevators.map((elevator) =>
         elevator.id === newData.id ? { ...elevator, ...newData } : elevator
       );
@@ -70,10 +66,6 @@ export default function Home() {
       socket?.off("onMessage");
     };
   }, [socket]);
-
-  useEffect(() => {
-    console.log("elevators ------------------ ", elevators);
-  }, [elevators]);
 
   if (!elevators.length) return <div>Loading...</div>;
 
