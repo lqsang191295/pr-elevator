@@ -12,7 +12,7 @@ import { iElevator, iQueueElevatorPayload } from '../types/elevator.type';
 @Injectable()
 @WebSocketGateway({
   cors: {
-    origin: ['http://localhost:3000'],
+    origin: ['*'],
   },
 })
 export class MyGateway implements OnModuleInit {
