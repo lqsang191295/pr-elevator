@@ -3,7 +3,11 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { io, Socket } from "socket.io-client";
 
 export const socket = io(
-  process.env.API_HOST || "https://pr-elevator.vercel.app"
+  process.env.API_HOST || "https://pr-elevator.vercel.app",
+  {
+    transports: ["websocket"], // Bật transport WebSocket
+    withCredentials: true, // Nếu có cookies hoặc authentication
+  }
 );
 export const WebsocketContext = createContext<Socket | null>(null);
 
