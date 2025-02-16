@@ -20,11 +20,11 @@ export default function Home() {
   };
 
   const handleRequestFloor = async (payload: iRequestFloor) => {
-    await callElevator(payload);
+    // await callElevator(payload);
 
-    // console.log("AAAAAAAAAA ", payload);
+    console.log("AAAAAAAAAA ", payload);
 
-    // socket?.emit("callElevator", payload);
+    socket?.emit("callElevator", payload);
   };
 
   const connectSocket = () => {
