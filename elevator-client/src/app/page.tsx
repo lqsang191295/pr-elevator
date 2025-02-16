@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import ElevatorContainer from "./components/elevatorContainer";
 import { iElevator, iRequestFloor } from "@/types/elevator";
 import { WebsocketContext } from "@/contexts/WebsocketContext";
-import { callElevator, initialElevator } from "@/api/elevator";
+import { initialElevator } from "@/api/elevator";
 
 export default function Home() {
   const numbers = [...Array(10).keys()].reverse();
