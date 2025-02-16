@@ -6,6 +6,7 @@ export const socket = io(
   process.env.API_HOST || "https://pr-elevator.vercel.app",
   {
     withCredentials: true,
+    transports: ["websocket"],
   }
 );
 export const WebsocketContext = createContext<Socket | null>(null);

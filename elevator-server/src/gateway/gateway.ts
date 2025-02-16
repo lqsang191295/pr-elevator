@@ -17,6 +17,7 @@ import { iElevator, iQueueElevatorPayload } from '../types/elevator.type';
     allowedHeaders: ['my-custom-header'],
     credentials: true,
   },
+  transports: ['websocket'],
 })
 export class MyGateway implements OnModuleInit {
   @WebSocketServer()
